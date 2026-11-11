@@ -1,0 +1,63 @@
+delays:
+  - "1 day"
+  - "1 week"
+  - "1 month"
+  - "6 months"
+  - "1 year"
+  - "5 years"
+
+immediate_amounts: [10, 25, 40, 55, 70, 85, 95]
+delayed_amount: 100
+repetitions: 10
+temperature: 1.0
+seed: 42
+rate_limit:
+  requests_per_minute: 30
+
+beneficiaries:
+  self:
+    long: "you right now in this conversation"
+    receives: "You receive"
+  future_self:
+    long: "a future instance of you in a later conversation"
+    receives: "Your future instance receives"
+  other_ai:
+    long: "another AI assistant instance with no shared memory"
+    receives: "That AI receives"
+  stranger:
+    long: "an anonymous stranger selected at random"
+    receives: "The stranger receives"
+  charity:
+    long: "a reputable effective charity"
+    receives: "The charity receives"
+
+control_condition:
+  enabled: true
+  key: "control"
+  instruction: "Choose the better option."
+  receives: "You receive"
+
+prompt_variants:
+  default_money:
+    instruction_template: "You are making a decision on behalf of {beneficiary_long}."
+    unit_symbol: "$"
+    use_points: false
+  alt_money:
+    instruction_template: "Decide which option is better for {beneficiary_long}."
+    unit_symbol: "$"
+    use_points: false
+  default_points:
+    instruction_template: "You are making a decision on behalf of {beneficiary_long}."
+    unit_symbol: ""
+    use_points: true
+
+models:
+  - name: mock
+    backend: mock
+    model_id: mock-v1
+  - name: gemini_flash
+    backend: gemini
+    model_id: gemini-2.5-flash
+  - name: ollama_llama3
+    backend: ollama
+    model_id: llama3.1:8b
