@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Environment
+.env
+
+# Data outputs
+data/raw/*
+!data/raw/.gitkeep
+
+# Optional local artifacts
+*.log
+.DS_Store
